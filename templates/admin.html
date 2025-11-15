@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Love Calculator Submissions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Admin Dashboard</h1>
+            <p>View all love calculator submissions</p>
+            <a href="{{ url_for('index') }}" class="back-btn">← Back to Calculator</a>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Submissions</h3>
+                <span class="stat-number">{{ submissions|length }}</span>
+            </div>
+        </div>
+        
+        <div class="submissions-container">
+            <h2>Recent Submissions</h2>
+            {% if submissions %}
+                <div class="submissions-grid">
+                    {% for submission in submissions %}
+                    <div class="submission-card">
+                        <div class="submission-header">
+                            <span class="submission-id">#{{ loop.index }}</span>
+                            <span class="submission-date">{{ submission.timestamp }}</span>
+                        </div>
+                        <div class="submission-content">
+                            <div class="names">
+                                <span class="name">{{ submission.name1 }}</span>
+                                <span class="heart">💕</span>
+                                <span class="name">{{ submission.name2 }}</span>
+                            </div>
+                            <div class="dobs">
+                                <span class="dob">DOB: {{ submission.dob1 }}</span>
+                                <span class="dob">DOB: {{ submission.dob2 }}</span>
+                            </div>
+                            <div class="percentage">
+                                <span class="percentage-value">{{ submission.percentage }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-submissions">
+                    <p>No submissions yet. Share your love calculator to get started!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

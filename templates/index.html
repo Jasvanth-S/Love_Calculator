@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Love Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💕 Love Calculator 💕</h1>
+            <p>Discover your love compatibility!</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="loveForm">
+                <div class="input-group">
+                    <div class="person-input">
+                        <h3>👤 Person 1</h3>
+                        <input type="text" id="name1" placeholder="Enter first name" required>
+                        <label for="dob1">Date of Birth:</label>
+                        <input type="date" id="dob1" required>
+                    </div>
+                    
+                    <div class="heart-divider">❤️</div>
+                    
+                    <div class="person-input">
+                        <h3>👤 Person 2</h3>
+                        <input type="text" id="name2" placeholder="Enter second name" required>
+                        <label for="dob2">Date of Birth:</label>
+                        <input type="date" id="dob2" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="calculate-btn">
+                    <span class="btn-text">Calculate Love ❤️</span>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </form>
+        </div>
+        
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <div class="result-card">
+                <h2>💕 Love Result 💕</h2>
+                <div class="names-display" id="namesDisplay"></div>
+                <div class="percentage-display">
+                    <div class="percentage-circle">
+                        <span id="percentageValue">0</span>%
+                    </div>
+                </div>
+                <div class="result-message" id="resultMessage"></div>
+                <div class="action-buttons">
+                    <button class="share-btn" id="shareBtn">Share on WhatsApp 📱</button>
+                    <button class="try-again-btn" onclick="resetForm()">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
